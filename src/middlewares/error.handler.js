@@ -3,11 +3,10 @@ export const logErrors = (error, req, res, next) => {
   next(error);
 };
 
-export const errorHandler = (error, req, res, next) => {
+export const serverErrorHandler = (error, req, res, next) => {
   res.status(500).json({
     message: error.message,
     stack: error.stacck,
   });
   next(error);
 };
-

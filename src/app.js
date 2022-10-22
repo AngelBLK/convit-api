@@ -1,14 +1,15 @@
 import express, { json } from "express";
 import clients from "./routes/clients.routes.js";
 import users from "./routes/users.routes.js";
-import { errorHandler } from "./middlewares/error.handler.js";
+import { serverErrorHandler } from "./middlewares/error.handler.js";
+import { checkApiKey } from "./middlewares/auth.handler.js";
 const app = express();
 
 app.use(express.json());
 
-app.use("/api", users);
+app.use("/api", checkApiKey, users);
 app.use("/api", clients);
 
-app.use(errorHandler);
+app.use(serverErrorHandler);
 
 export default app;
