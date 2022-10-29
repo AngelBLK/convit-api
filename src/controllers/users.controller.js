@@ -9,3 +9,19 @@ export const getUsers = async ( req, res, next ) => {
     throw boom.badImplementation('Server Error');
   }
 }
+
+export const createUsers = (req, res, next) => {
+  try {
+    const name = req.body.name;
+    const country = req.body.country;
+    const state = req.body.state;
+    const email = req.body.email;
+    const phone_number = req.body.phone_number;
+    const password = req.body.password;
+    //Country code from mexico: 139
+    //State code frome CDMX: 2332
+    pool.query('INSERT INTO cliente (name, phone, pass, register_date, country_code, )');
+  } catch (error) {
+
+  }
+}
