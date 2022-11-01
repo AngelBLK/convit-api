@@ -4,8 +4,8 @@ const id = Joi.number().integer();
 const name = Joi.string();
 const country = Joi.number().integer();
 const state = Joi.number().integer();
-const email = Joi.string().email;
-const phone_number = Joi.string();
+const email = Joi.string().email();
+const phone_number = Joi.string().min(10).max(10);
 const password = Joi.string().min(8);
 
 export const logInUserSchema = Joi.object({
@@ -18,6 +18,7 @@ export const createUserSchema = Joi.object({
   country: country.required(),
   state: state.required(),
   email: email.required(),
+  phone_number: phone_number.required(),
   password: password.required(),
 });
 
@@ -27,6 +28,7 @@ export const updateUserSchema = Joi.object({
   country: country,
   state: state,
   email: email,
+  phone_number: phone_number,
   password: password,
 });
 
