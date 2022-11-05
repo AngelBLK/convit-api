@@ -21,10 +21,9 @@ class UserController {
     const hash = await bcrypt.hash(password, 10);
     
     const [ rows ] = await pool.query('INSERT INTO cliente (clte_nombre, clte_correo, clte_pass, clte_telefono, clte_id_pais, clte_id_estado) VALUES ( ?, ?, ?, ?, ?, ? )', [`${name}`, `${email}`, `${hash}`, `${phone_number}`, country, state]);
-    console.log(hash);
     return hash;
   }
-  
+
 }
 
 export default UserController;
