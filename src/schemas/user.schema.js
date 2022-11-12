@@ -8,11 +8,6 @@ const email = Joi.string().email();
 const phone_number = Joi.string().min(10).max(10);
 const password = Joi.string().min(8);
 
-export const logInUserSchema = Joi.object({
-  email: email.required(),
-  password: password.required(),
-});
-
 export const createUserSchema = Joi.object({
   name: name.required(),
   country: country.required(),
