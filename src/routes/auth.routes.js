@@ -20,7 +20,7 @@ router.post('/login',
         email: clte_correo,
       }
       const token = jwt.sign(payload, JWT_SECRET);
-      res.status(200).json({
+      return res.status(200).json({
         message: 'Usuario autorizado',
         status: true,
         user: {
