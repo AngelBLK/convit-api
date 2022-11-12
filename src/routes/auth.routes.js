@@ -11,6 +11,7 @@ router.post('/login',
   async (req, res, next) => {
     try {
       res.status(200).json({
+        message: 'Usuario autorizado',
         "status": true,
       });
     } catch (error) {

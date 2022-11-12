@@ -14,7 +14,6 @@ export const LocalStrategy = new Strategy(
   async (email, password,  done) => {
   try {
     const user = await userController.getUserByEmail(email);
-    console.log(user.clte_pass);
     if (!user) {
       done(boom.unauthorized('Correo invalido'), false);
     }
