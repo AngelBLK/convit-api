@@ -1,4 +1,4 @@
-import { JWT_SECRET } from '../config.js';
+import { JWT_SECRET } from '../../../config.js';
 import {Strategy, ExtractJwt} from "passport-jwt";
 
 const options = {
