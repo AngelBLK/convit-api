@@ -15,7 +15,6 @@ router.get('/countries', async (req, res, next) => {
       countriesList
     });
   } catch (error) {
-    console.log("Aqui");
     next(error);
   }
 });
