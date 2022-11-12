@@ -14,7 +14,11 @@ const user = new UserController();
 router.get('/users', async (req, res, next) => {
   try {
     const users = await user.getUser();
-    res.json(users);
+    res.json({
+      message: "Petición correcta",
+      status: true,
+      users
+    });
   } catch (error) {
     next(error);
   }
@@ -25,7 +29,11 @@ router.post('/users',
     try {
       const body = req.body;
       const newUser = await user.createUser(body);
-      res.status(201).json(newUser);
+      res.status(201).json({
+        message: "Petición correcta",
+        status: true,
+        user: newUser
+      });
       
     } catch (error) {
       next(error);
