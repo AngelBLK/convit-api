@@ -15,6 +15,18 @@ class UserController {
     }
   }
 
+  getUserById = async (id) => {
+    try {
+      const [ result ] = await pool.query('SELECT cl.clte_nombre, cl.clte_correo, cl.clte_pass, cl.clte_telefono, pa.pais_nombre, es.esdo_nombre FROM cliente cl\n' +
+        'INNER JOIN estado es ON clte_id_estado = esdo_id_estado\n' +
+        'INNER JOIN pais pa ON clte_id_pais = pais_id_pais\n' +
+        'WHERE clte_id_cliente = ? ', [id]);
+      return result;
+    } catch ( error ) {
+      throw boom.badImplementation('Server Error');
+    }
+  }
+
   createUser = async (data) => {
     const { name,  email, password, phone_number, country, state} = data;
     const hash = await bcrypt.hash(password, 10);
