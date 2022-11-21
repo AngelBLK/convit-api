@@ -1,7 +1,7 @@
 import { JWT_SECRET } from '../config.js';
 
 import { Router } from "express";
-import {auth, jwtStrat} from "../utils/auth/index.js";
+import {auth} from "../utils/auth/index.js";
 import { loginUserSchema } from '../schemas/loginAuth.schema.js';
 import { validatorHandler } from '../middlewares/validator.handler.js';
 import jwt from "jsonwebtoken";

@@ -17,7 +17,7 @@ class UserController {
 
   getUserById = async (id) => {
     try {
-      const [ result ] = await pool.query('SELECT cl.clte_nombre, cl.clte_correo, cl.clte_pass, cl.clte_telefono, pa.pais_nombre, es.esdo_nombre FROM cliente cl\n' +
+      const [ result ] = await pool.query('SELECT cl.clte_nombre, cl.clte_correo, cl.clte_telefono, pa.pais_nombre, es.esdo_nombre FROM cliente cl\n' +
         'INNER JOIN estado es ON clte_id_estado = esdo_id_estado\n' +
         'INNER JOIN pais pa ON clte_id_pais = pais_id_pais\n' +
         'WHERE clte_id_cliente = ? ', [id]);

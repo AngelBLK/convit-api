@@ -1,4 +1,5 @@
 import { Router } from "express";
+import passport from "passport";
 import UserController  from "../controllers/users.controller.js";
 import { validatorHandler } from '../middlewares/validator.handler.js';
 
@@ -24,19 +25,21 @@ router.get('/users', async (req, res, next) => {
   }
 });
 
-router.get('/users/:id', async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    const userById = await user.getUserById(id);
+router.get('/users/:id',
+  passport.authenticate('jwt', {session: false}),
+  async (req, res, next) => {
+    try {
+      const id = req.params.id;
+      const userById = await user.getUserById(id);
 
-    return res.json({
-      message: "Petición correcta",
-      status: true,
-      userById
-    });
-  } catch (error) {
-    next(error);
-  }
+      return res.json({
+        message: "Petición correcta",
+        status: true,
+        userById
+      });
+    } catch (error) {
+      next(error);
+    }
 });
 router.post('/users',
   validatorHandler(createUserSchema, 'body'), 
