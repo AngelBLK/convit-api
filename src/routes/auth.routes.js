@@ -16,7 +16,7 @@ router.post('/login',
     try {
       const {clte_id_cliente, clte_correo } = req.user;
       const payload = {
-        sub: clte_id_cliente,
+        id: clte_id_cliente,
         email: clte_correo,
       }
       const token = jwt.sign(payload, JWT_SECRET);
